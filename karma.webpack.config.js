@@ -8,13 +8,13 @@ module.exports = {
         libraryTarget: "amd"
     },
     resolve: {
-        extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+        extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx']
     },
     module: {
         loaders: [
             {
-                test: /\.tsx?$/,
-                loader: 'ts-loader'
+                test: /\.jsx?$/,
+                loader: 'babel-loader'
             }
         ]
     },
