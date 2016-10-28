@@ -3,7 +3,7 @@ var webpack = require("webpack");
 module.exports = {
     entry: {
         main: [
-            './src/app/main.ts' // entry point for your application code
+            './src/app/main.js' // entry point for your application code
         ],
         vendor: [
             // put your third party libs here
@@ -15,14 +15,14 @@ module.exports = {
         libraryTarget: "amd"
     },
     resolve: {
-        extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+        extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx']
     },
     module: {
         loaders: [
+            // ES2015 files
             {
-                test: /\.tsx?$/,
-                loader: 'ts-loader',
-                exclude: ''
+              test: /\.(js|jsx)$/,
+              loader: 'babel-loader'
             },
             // css
             {

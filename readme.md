@@ -6,7 +6,5 @@ Generates separate app and vendor bundles via webpack, while pulling in the ESRI
 
 ```
 npm install
-typings install
 npm run build
-npm run test
 ```
