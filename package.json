@@ -1,7 +1,7 @@
 {
-  "name": "esri-webpack",
-  "version": "0.0.0",
-  "description": "ESRI JSAPI with Webpack demo",
+  "name": "esri-webpack-babel",
+  "version": "0.0.1",
+  "description": "How to use the ArcGIS API for JavaScript in an application built with webpack and Babel to compile ES2015 modules",
   "main": "dist/esri-webpack",
   "scripts": {
     "build": "webpack --config ./webpack.config.js"

@@ -1,10 +1,9 @@
-# esri-webpack
+# esri-webpack-babel
 
-ESRI JSAPI with Webpack demo
+A bare bones example showing how to use the
+[ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) in an application built with [webpack](https://webpack.github.io/) and  [Babel](https://babeljs.io/) to compile ES2015 modules.
 
-[ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) with [webpack](https://webpack.github.io/) demo, using ES2015
-
-Generates separate app and vendor bundles via webpack, while pulling in the ESRI JSAPI and dojo via CDN.
+Bundles application code via webpack, while pulling in the ArcGIS API for JavaScript (and Dojo) via CDN.
 
 ## Running the demo
 
@@ -13,10 +12,12 @@ npm install
 npm run build
 ```
 
+Then serve the root folder using your favorite web server, such as [http-server](https://www.npmjs.com/package/http-server) and open src/app/index.html in a browser.
+
 ## How it works
 
-The approach demonstrated here uses webpack to bundle your application code
-while [excluding the modules](webpack.config.js#L43-57) from the ArcGIS API for JavaScript, which is [loaded from a CDN via a script tag](src/app/index.html#L20).
+The approach demonstrated here uses webpack to bundle your application code,
+but [excludes Esri and Dojo modules](webpack.config.js#L43-57) from the local build. Instead the ArcGIS API for JavaScript is [loaded from a CDN via a script tag](src/app/index.html#L20).
 The [Dojo loader](https://dojotoolkit.org/reference-guide/1.10/loader/) that is included in the ArcGIS API for JavaScript is then used to [load webpack's bundled output via a `require()` statement](src/app/index.html#L26).
 
 This repository uses [v3.x of the ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/3/), but the same technique works just as well with [v4.x](https://developers.arcgis.com/javascript/latest/guide/discover/index.html).
