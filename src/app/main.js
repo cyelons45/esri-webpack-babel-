@@ -1,3 +1,3 @@
 import Map from "esri/map";
 
-var map = new Map("content", {basemap: "streets"});
+var map = new Map("content", {basemap: "streets", zoom: 3});

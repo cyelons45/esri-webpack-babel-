@@ -8,13 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/tomwayson/esri-webpack-babel.git"
   },
   "keywords": [],
   "files": [
     "dist"
   ],
   "author": "Ian Firkin",
+  "contributors": ["Tom Wayson <tom@tomwayson.com> (http://tomwayson.com)"],
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.18.0",
