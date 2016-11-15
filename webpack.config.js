@@ -1,4 +1,4 @@
-var webpack = require("webpack");
+var webpack = require('webpack');
 
 module.exports = {
     entry: {
@@ -14,7 +14,7 @@ module.exports = {
         publicPath: './',
         // the bundled output will be loaded by the Dojo AMD loader
         // that is included in the ArcGIS API for JavaScript
-        libraryTarget: "amd"
+        libraryTarget: 'amd'
     },
     resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx']
@@ -29,7 +29,7 @@ module.exports = {
             // css
             {
                 test: /\.css$/,
-                loader: "style-loader!css-loader"
+                loader: 'style-loader!css-loader'
             }
         ]
     },
@@ -47,9 +47,11 @@ module.exports = {
             if (/^dojo/.test(request) ||
                 /^dojox/.test(request) ||
                 /^dijit/.test(request) ||
-                /^esri/.test(request)
+                /^esri/.test(request) ||
+                // additional 3rd-party Dojo module
+                /^cluster-layer-js/.test(request)
             ) {
-                return callback(null, "amd " + request);
+                return callback(null, 'amd ' + request);
             }
             callback();
         }
