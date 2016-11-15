@@ -3,8 +3,8 @@ import FeatureLayer from 'esri/layers/FeatureLayer';
 import clusterfeaturelayer from 'cluster-layer-js/clusterfeaturelayer';
 
 var map = new Map('content', {
-  basemap: "streets",
-  zoom: 3
+  basemap: 'dark-gray',
+  zoom: 5
 });
 
 map.on('load', () => {

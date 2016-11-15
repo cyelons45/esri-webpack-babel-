@@ -48,7 +48,9 @@ module.exports = {
                 /^dojox/.test(request) ||
                 /^dijit/.test(request) ||
                 /^esri/.test(request) ||
-                // additional 3rd-party Dojo module
+                // ordinarily you would only need to speficy the above prefixes,
+                // but because we include a third-party Dojo module in this example
+                // we need to add it's package to the list of prefixes to exclude
                 /^cluster-layer-js/.test(request)
             ) {
                 return callback(null, 'amd ' + request);

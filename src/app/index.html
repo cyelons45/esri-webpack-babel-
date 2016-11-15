@@ -3,7 +3,7 @@
     <head>
         <title>esri-webpack-demo</title>
         <!--esri styles are loaded outside of webpack-->
-        <link rel="stylesheet" href="https://js.arcgis.com/3.17/esri/css/esri.css">
+        <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css">
         <style>
         html, body, #content {
             padding: 0;
@@ -16,17 +16,21 @@
 
     <body>
         <div id="content"></div>
-        <!--esri JavaScript must be loaded outside of webpack-->
-        <!--configure Dojo with an additional 3rd-party module-->
-        <script src="https://js.arcgis.com/3.17/"
-          data-dojo-config="
+        <!-- optionally configure Dojo loader before loading the ArcGIS API for JavaScript -->
+        <script>
+          window.dojoConfig = {
             async: true,
+            // in this example we're using a third party library 
+            // that is not bundled with the ArcIGS API for JavaScript
+            // so we need to tell Dojo where to load it from
             packages: [{
               name: 'cluster-layer-js',
-              location: 'https://rawgit.com/Esri/cluster-layer-js/master/src'
+              location: '//rawgit.com/Esri/cluster-layer-js/master/src'
             }]
-          ">
+          };
         </script>
+        <!-- the ArcGIS API for JavaScript must be loaded outside of webpack-->
+        <script src="https://js.arcgis.com/3.18/"></script>
         <script>
             // once the ArcGIS API for JavaScript has loaded
             // we must use Dojo's require() to load the bundled webpack output
