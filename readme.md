@@ -16,11 +16,32 @@ Then serve the root folder using your favorite web server, such as [http-server]
 
 ## How it works
 
-The approach demonstrated here uses webpack to bundle your application code,
-but [excludes Esri and Dojo modules](webpack.config.js#L43-57) from the local build. Instead the ArcGIS API for JavaScript is [loaded from a CDN via a script tag](src/app/index.html#L20).
-The [Dojo loader](https://dojotoolkit.org/reference-guide/1.10/loader/) that is included in the ArcGIS API for JavaScript is then used to [load webpack's bundled output via a `require()` statement](src/app/index.html#L26).
+The approach demonstrated here uses webpack to bundle your application code, but loads the ArcGIS API for JavaScript from a pre-build distribution. The key steps are to:
+ 1. [configure webpack to output the bundle as an AMD module](webpack.config.js#L17)
+ 1. [exclude Esri and Dojo modules](webpack.config.js#L47-L50) from the local build
+ 1. [load the ArcGIS API for JavaScript via a script tag](src/app/index.html#L33) (in this case from the CDN)
+ 1. use the [Dojo loader](https://dojotoolkit.org/reference-guide/1.10/loader/) that is included in the ArcGIS API for JavaScript to [load webpack's bundled output via a `require()` statement](src/app/index.html#L39)
+
+After you've taken these steps you will be able to use ES2015 import statements like `import Map from 'esri/map';` to reference Esri modules.
 
 This repository uses [v3.x of the ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/3/), but the same technique works just as well with [v4.x](https://developers.arcgis.com/javascript/latest/guide/discover/index.html).
+
+## Integrating with other libraries
+
+### Non-Dojo lbraries
+For any non-Dojo libraries (jQuery, d3, etc) you can include them in your webpack bundles as you normally would.
+
+### Dojo lbraries
+For Dojo libraries you will need to take a few additional steps:
+ 1. [configure the Dojo loader with the location of the package](src/app/index.html#L20-L21)
+ 1. [exclude the package](webpack.config.js#L54) from the local build
+
+## Known limitations of this approach
+Since the entire application is being loaded via the ArcGIS API for JavaScript, you cannot lazy load it and must incur the cost of downloading that script before users can interact with your app.
+
+Also, [this approach is not yet working with angular-cli](https://github.com/tomwayson/angular2-esri-example/issues/16).
+
+If either of those are requirements for your application, you can try the approach demonstrated in [angular-cli-esri](https://github.com/tomwayson/angular-cli-esri).
 
 ## Why do it this way?
 
@@ -29,11 +50,10 @@ Because Dojo implements the [AMD specification](https://en.wikipedia.org/wiki/As
 the only reliable way to load Dojo AMD modules is to use the Dojo loader.
 
 ### What about [dojo-webpack-loader]?
-There is a webpack loader for Dojo modules, [dojo-webpack-loader], but [it currently doesn't work with the ArcGIS API for JavaScript](https://github.com/Nordth/dojo-webpack-loader/issues/7),
-That may or may not be due to the fact that [it appears to have skimped on the implementation of the i18n plugin](https://github.com/Nordth/dojo-webpack-loader/issues/6).
+There is a webpack loader for Dojo modules, [dojo-webpack-loader], but [it currently doesn't work with the ArcGIS API for JavaScript](https://github.com/Nordth/dojo-webpack-loader/issues/7).
 
 Even once someone fixes the above issues there would be a few reasons why you might not want to use that approach,
-at least not until the following issues have been worked out.
+at least not until someone figures out the following.
 
 Dojo's AMD architecture encourages writing large libraries out of many small modules. To strike a balance between the number and size of script requests,
 Dojo encourages using [their build tool](https://dojotoolkit.org/reference-guide/1.10/build/) to bundle the modules into "layers"
