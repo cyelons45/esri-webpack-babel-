@@ -33,7 +33,7 @@ For any non-Dojo libraries (jQuery, d3, etc) you can include them in your webpac
 
 ### Dojo lbraries
 For Dojo libraries you will need to take a few additional steps:
- 1. [configure the Dojo loader with the location of the package](src/app/index.html#L20-L21)
+ 1. [configure the Dojo loader with the location of the package](src/app/index.html#L20-L31)
  1. [exclude the package](webpack.config.js#L54) from the local build
 
 ## Known limitations of this approach
