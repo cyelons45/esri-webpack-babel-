@@ -18,7 +18,7 @@ Then serve the root folder using your favorite web server, such as [http-server]
 
 The approach demonstrated here uses webpack to bundle your application code, but loads the ArcGIS API for JavaScript from a pre-build distribution. The key steps are to:
  1. [configure webpack to output the bundle as an AMD module](webpack.config.js#L17)
- 1. [exclude Esri and Dojo modules](webpack.config.js#L47-L50) from the local build
+ 1. [exclude Esri and Dojo modules](webpack.config.js#L50-L53) from the local build
  1. [load the ArcGIS API for JavaScript via a script tag](src/app/index.html#L33) (in this case from the CDN)
  1. use the [Dojo loader](https://dojotoolkit.org/reference-guide/1.10/loader/) that is included in the ArcGIS API for JavaScript to [load webpack's bundled output via a `require()` statement](src/app/index.html#L39)
 
@@ -34,7 +34,7 @@ For any non-Dojo libraries (jQuery, d3, etc) you can include them in your webpac
 ### Dojo lbraries
 For Dojo libraries you will need to take a few additional steps:
  1. [configure the Dojo loader with the location of the package](src/app/index.html#L20-L31)
- 1. [exclude the package](webpack.config.js#L54) from the local build
+ 1. [exclude the package](webpack.config.js#L57) from the local build
 
 ## Known limitations of this approach
 Since the entire application is being loaded via the ArcGIS API for JavaScript, you cannot lazy load it and must incur the cost of downloading that script before users can interact with your app.
