@@ -2,12 +2,12 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
+        // entry point for your application code
         main: [
-            './src/app/main.js' // entry point for your application code
+            './src/app/main.js'
         ],
-        vendor: [
-            // put your third party libs here
-        ]
+        // put your third party libs here
+        // vendor: []
     },
     output: {
         filename: './dist/[name].bundle.js',
@@ -17,10 +17,10 @@ module.exports = {
         libraryTarget: 'amd'
     },
     resolve: {
-        extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx']
+        extensions: ['.webpack.js', '.web.js', '.js', '.jsx']
     },
     module: {
-        loaders: [
+        rules: [
             // ES2015 files
             {
               test: /\.(js|jsx)$/,
@@ -29,7 +29,10 @@ module.exports = {
             // css
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                use: [
+                  'style-loader',
+                  'css-loader'
+                ]
             }
         ]
     },
