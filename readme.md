@@ -1,6 +1,6 @@
 # esri-webpack-babel
 
-**UPDATE**: This technique demonstrated in this repository will work, but you should probably just use [esri-loader](https://github.com/Esri/esri-loader/).
+**UPDATE**: This technique demonstrated in this repository will work, but you should probably just use [esri-loader](https://github.com/Esri/esri-loader/). Read this [blog post](http://tomwayson.com/2018/01/05/loader-of-the-things-one-library-to-load-them-all/) to find out why.
 
 A bare bones example showing how to use the
 [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) in an application built with [webpack](https://webpack.github.io/) and  [Babel](https://babeljs.io/) to compile ES2015 modules.
