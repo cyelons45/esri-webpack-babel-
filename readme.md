@@ -1,6 +1,10 @@
 # esri-webpack-babel
 
-**UPDATE**: This technique demonstrated in this repository will work, but you should probably just use [esri-loader](https://github.com/Esri/esri-loader/). Read this [blog post](http://tomwayson.com/2018/01/05/loader-of-the-things-one-library-to-load-them-all/) to find out why.
+**UPDATE**: This technique demonstrated in this repository will work, but you should probably use either:
+- the newer [@arcgis/webpack-plugin](https://github.com/Esri/arcgis-webpack-plugin) with the ArcGIS API v4.7+
+- or [esri-loader](https://github.com/Esri/esri-loader/) with the ArcGIS API v3.x - v4.6
+
+Read this [blog post](https://community.esri.com/people/TWayson-esristaff/blog/2018/05/10/arcgiswebpack-plugin-vs-esri-loader) for more information.
 
 A bare bones example showing how to use the
 [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) in an application built with [webpack](https://webpack.github.io/) and  [Babel](https://babeljs.io/) to compile ES2015 modules.
