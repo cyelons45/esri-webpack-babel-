@@ -15,7 +15,9 @@
     "dist"
   ],
   "author": "Ian Firkin",
-  "contributors": ["Tom Wayson <tom@tomwayson.com> (http://tomwayson.com)"],
+  "contributors": [
+    "Tom Wayson <tom@tomwayson.com> (http://tomwayson.com)"
+  ],
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.18.0",
